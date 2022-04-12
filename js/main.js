@@ -18,10 +18,13 @@ fetch('https://newsx.p.rapidapi.com/search?limit=10&skip=0', options)
 function mapNews(resp) {
     return resp.map(data => {
         const newsBox = document.createElement('div');
+        newsBox.classList.add('news-box');
         newsBox.innerHTML = `
             <img class="news-img" src="${data.image}" alt="${data.title}">
-            <h1 class="news-title"><a href="${data.url}">${data.title}</a></h1>
-            <p class="news-summary">${shortenContent(data.summary)}</p>
+            <div class="content-box">
+                <h1 class="news-title"><a href="${data.url}">${data.title}</a></h1>
+                <p class="news-summary">${shortenContent(data.summary)}</p>
+            </div>
         `
         newsBoxes.appendChild(newsBox);
     })
